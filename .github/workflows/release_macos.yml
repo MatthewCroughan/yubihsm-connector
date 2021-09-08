@@ -17,8 +17,9 @@ jobs:
           set -x
           mkdir artifact
 
-          brew install go@1.14
-          export PATH=$PATH:/usr/local/opt/go\@1.14/bin:~/go/bin
+          brew install go
+          ls /usr/local/opt/
+          export PATH=$PATH:/usr/local/opt/go\@1.17/bin:~/go/bin
 
           make GB_BUILD_FLAGS="-tags disable_seccomp -ldflags '-s'"
           strip -u -r bin/yubihsm-connector*

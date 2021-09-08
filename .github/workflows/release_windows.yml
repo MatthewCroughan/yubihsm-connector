@@ -17,8 +17,9 @@ jobs:
           Set-PSDebug -Trace 1
           mkdir artifact
 
-          choco install -y golang --version=1.14
+          choco install -y golang
           refreshenv
+          go version
           go get github.com/josephspurrier/goversioninfo/cmd/goversioninfo
           $env:Path += ";C:\Users\runneradmin\go\bin"
 
