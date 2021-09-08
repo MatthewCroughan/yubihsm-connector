@@ -17,10 +17,10 @@ jobs:
           set -x
           mkdir artifact
 
-          curl -o - https://golang.org/dl/go1.17.darwin-amd64.tar.gz |\
-              sudo tar -C /usr/local -xzvf -
+          curl -L --max-redirs 2 -o - https://golang.org/dl/go1.17.darwin-amd64.tar.gz |\
+              sudo tar xf - -C /usr/local
           export PATH=$PATH:/usr/local/go/bin:~/go/bin
-                    
+
           make GB_BUILD_FLAGS="-tags disable_seccomp -ldflags '-s'"
           strip -u -r bin/yubihsm-connector*
           cp bin/yubihsm-connector artifact
