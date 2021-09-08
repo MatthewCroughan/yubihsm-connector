@@ -17,9 +17,10 @@ jobs:
           set -x
           mkdir artifact
 
-          brew install go@1.17
-          export PATH=$PATH:/usr/local/opt/go\@1.17/bin:~/go/bin
-
+          curl -o - https://golang.org/dl/go1.17.darwin-amd64.tar.gz |\
+              sudo tar -C /usr/local -xzvf -
+          export PATH=$PATH:/usr/local/go/bin:~/go/bin
+                    
           make GB_BUILD_FLAGS="-tags disable_seccomp -ldflags '-s'"
           strip -u -r bin/yubihsm-connector*
           cp bin/yubihsm-connector artifact
