@@ -17,8 +17,7 @@ jobs:
           set -x
           mkdir artifact
 
-          brew install go
-          ls /usr/local/opt/
+          brew install go@1.17
           export PATH=$PATH:/usr/local/opt/go\@1.17/bin:~/go/bin
 
           make GB_BUILD_FLAGS="-tags disable_seccomp -ldflags '-s'"
